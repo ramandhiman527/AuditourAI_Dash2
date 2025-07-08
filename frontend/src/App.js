@@ -4,6 +4,8 @@ import './App.css';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
+import DocumentManagement from './components/DocumentManagement';
+import Analytics from './components/Analytics';
 
 function App() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -25,11 +27,11 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/documents" element={<div className="p-6">Documents Page - Coming Soon</div>} />
-              <Route path="/analytics" element={<div className="p-6">Analytics Page - Coming Soon</div>} />
-              <Route path="/risk" element={<div className="p-6">Risk Assessment Page - Coming Soon</div>} />
-              <Route path="/reports" element={<div className="p-6">Reports Page - Coming Soon</div>} />
-              <Route path="/settings" element={<div className="p-6">Settings Page - Coming Soon</div>} />
+              <Route path="/documents" element={<DocumentManagement />} />
+              <Route path="/analytics" element={<Analytics />} />
+              <Route path="/risk" element={<div className="p-6"><h1 className="text-2xl font-bold">Risk Assessment</h1><p className="text-gray-600 mt-2">Coming Soon - Advanced risk analysis and mitigation strategies</p></div>} />
+              <Route path="/reports" element={<div className="p-6"><h1 className="text-2xl font-bold">Reports</h1><p className="text-gray-600 mt-2">Coming Soon - Comprehensive audit reports and summaries</p></div>} />
+              <Route path="/settings" element={<div className="p-6"><h1 className="text-2xl font-bold">Settings</h1><p className="text-gray-600 mt-2">Coming Soon - Configure your AI audit preferences</p></div>} />
             </Routes>
           </main>
         </div>
