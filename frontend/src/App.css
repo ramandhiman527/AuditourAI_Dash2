@@ -1,34 +1,154 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* AI Audit Dashboard Custom Styles */
+
+:root {
+  --primary: #4F46E5;     /* Indigo */
+  --secondary: #10B981;   /* Green */
+  --warning: #F59E0B;     /* Amber */
+  --danger: #EF4444;      /* Red */
+  --gray-50: #F9FAFB;
+  --gray-900: #111827;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+/* Cards */
+.card {
+  @apply bg-white rounded-xl shadow-sm border p-6 transition-all duration-200;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.card:hover {
+  @apply shadow-lg;
 }
 
-.App-link {
-    color: #61dafb;
+/* AI Elements */
+.ai-badge {
+  @apply bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full text-xs font-medium transition-colors;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.ai-badge:hover {
+  @apply bg-indigo-200;
+}
+
+/* Buttons */
+.btn-primary {
+  @apply bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors duration-200;
+}
+
+.btn-secondary {
+  @apply bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors duration-200;
+}
+
+/* Smooth transitions for interactive elements */
+.transition-smooth {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Gradient backgrounds */
+.gradient-indigo {
+  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+}
+
+.gradient-green {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Utility classes */
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Focus states */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500;
+}
+
+/* Dashboard specific styles */
+.dashboard-metric-card {
+  @apply bg-white rounded-xl shadow-sm border p-6 hover:shadow-lg transition-all duration-200;
+}
+
+.dashboard-metric-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Document grid responsive */
+.document-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Chart container */
+.chart-container {
+  @apply bg-white rounded-xl shadow-sm border p-6;
+}
+
+/* Loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .document-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboard-metric-card {
+    padding: 1rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none;
+  }
 }
