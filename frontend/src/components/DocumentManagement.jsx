@@ -173,10 +173,10 @@ const DocumentManagement = () => {
             </Card>
           ))}
         </div>
-      </motion.div>
+      </div>
 
       {/* Smart Search */}
-      <motion.div variants={itemVariants}>
+      <div>
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center space-x-2">
