@@ -32,7 +32,7 @@ function App() {
             <Routes>
               <Route path="/" element={<EnhancedDashboard />} />
               <Route path="/dashboard" element={<EnhancedDashboard />} />
-              <Route path="/documents" element={<DocumentManagement />} />
+              <Route path="/documents" element={<DocumentManagementMinimal />} />
               <Route path="/analytics" element={<Analytics />} />
               <Route path="/predictive" element={<PredictiveAnalyticsPage />} />
               <Route path="/automation" element={<AutomationCenter />} />
