@@ -1,0 +1,105 @@
+<analysis>
+The previous AI engineer successfully built an AI-powered audit dashboard, progressively enhancing its features. Initially, a complete frontend MVP was developed with mock data, covering smart headers, intelligent sidebars, dashboard overview, document management, and simple analytics, all styled with Tailwind CSS and Recharts. Following user feedback, core components like , , , and  were significantly refined to meet detailed functional and UX requirements, still using mocks.
+
+The project then moved to Phase 2, aiming for predictive and autonomous features, involving real-time infrastructure (Zustand, WebSockets), advanced charts, and intelligent automation. However, during this phase, the frontend encountered persistent heap limit memory errors, preventing successful screenshots and full verification. The latest instruction from the user pivoted the focus to an extremely detailed implementation of the Document Management page, which the AI engineer was actively working on, creating new, specific components and mock data for this section, and was about to take a screenshot to verify. The core challenge is the unresolved frontend memory issue.
+</analysis>
+
+<product_requirements>
+The goal is to build a clean, modern AI-powered audit dashboard as a launchable MVP.
+**Core Features (Initial Phase):**
+1.  **Smart Header:** AI search bar with suggestions, real-time AI status, user profile with notifications.
+2.  **Intelligent Sidebar:** Navigation with AI priority badges, contextual quick actions, responsive mobile menu.
+3.  **Dashboard Overview:** 4 key metric cards with AI insights, quick file upload, recent activity feed, AI conversation panel.
+4.  **Document Management:** Drag & drop file upload, document grid with AI processing status, basic search and filter.
+5.  **Simple Analytics:** 2-3 key charts with AI annotations, trend indicators, basic filtering.
+
+**Design Requirements:** Simple color palette (Indigo, Green, Amber, Red, Gray), defined component style patterns for cards, AI elements, and primary buttons. Emphasis on motion, depth, bold typography, confident color use, breaking the grid, generous whitespace, and attention to detail.
+
+**Enhanced Component Requirements (Mid-Phase 1):**
+*   **AIMetricCard:** Display metric with trend, AI insight bubble, hover animations, click for details.
+*   **AISearchBar:** Natural language search, AI-powered suggestions, voice input.
+*   **DocumentUploadZone:** Drag & drop, progress indication, AI processing status, file type validation.
+*   **AIConversationPanel:** Chat-like interface, AI confidence indicators, quick action suggestions, typing indicators.
+
+**Phase 2 Goals (Predictive & Autonomous Assistant):**
+*   **Real-Time Infrastructure:** WebSocket connections, Zustand state management, processing pipeline visualization, AI status indicators.
+*   **Predictive Analytics:** Advanced charts with AI annotations, anomaly detection, prediction overlays, interactive controls.
+*   **Intelligent Automation:** Workflow automation interface, advanced conversation system, intelligent document analysis cards, contextual action suggestions.
+*   **Polish & Integration:** Framer Motion animations, advanced error handling, performance optimizations.
+
+**Current Focus (Detailed Document Management):**
+*   **AI-Powered Upload Zone:** Drag-drop, instant AI classification, real-time file type detection, auto-categorization suggestions, progress indicators.
+*   **Processing Pipeline Visualization:** Real-time horizontal progress, AI confidence meters per stage, expandable details, error handling.
+*   **Intelligent Document Grid:** Document preview with AI insights, risk level indicators, extracted metadata preview, quick actions.
+*   **Smart Search & Filters:** Natural language input, AI query suggestions, advanced filters.
+*   **Missing Documents Alert:** AI-detected gaps, audit phase context, upload recommendations.
+</product_requirements>
+
+<key_technical_concepts>
+-   **React 18 with TypeScript:** Frontend framework for UI development.
+-   **Tailwind CSS:** Utility-first CSS framework for styling.
+-   **Lucide React:** Icon library.
+-   **Recharts:** Library for charting and data visualization.
+-   **Local State Management:** / for basic state,  for advanced state management (Phase 2).
+-   **Axios:** HTTP client for API calls (currently mocked).
+-   **FastAPI:** Python backend framework.
+-   **MongoDB:** NoSQL database for data storage.
+-   **WebSockets:** Planned for real-time updates.
+-   **Framer Motion:** Planned for sophisticated animations.
+</key_technical_concepts>
+
+<code_architecture>
+The application structure is divided into  (React) and  (FastAPI).
+
+
+
+**Key Files and Their Importance:**
+
+*   : The main React application entry point, responsible for routing () and integrating core components. It initially includes  (now ) and routes for  and . Updated to include Phase 2 routes.
+*   : Imports Tailwind base, components, and utilities. Contains global CSS variables for a theme system and defines base styles, adhering to design requirements.
+*   : Contains application-specific CSS, updated to include custom color palette and component style patterns as per design requirements.
+*   : Tailwind CSS configuration, extending theme with custom colors and animations defined by design system.
+*   : Manages frontend dependencies, including React, Tailwind, Lucide, Recharts, and various Radix UI components (used in ). It was updated to include  for advanced state management.
+*   : Centralized mock data source for the frontend application. It contains sample data for various components like metrics, search suggestions, activity feed, and AI conversations. It was updated multiple times to support new component requirements.
+*   : Newly created mock data specifically for the enhanced Document Management page, including document details, processing statuses, and AI insights.
+*   : Implements the Smart Header features, including the AI search bar, real-time AI status, and user profile.
+*   : Implements the Intelligent Sidebar, managing navigation, AI priority badges, and quick actions. Updated to include Phase 2 navigation items.
+*    (and ): The main dashboard overview, integrating metric cards, file upload, activity feed, and the AI conversation panel.  was created to integrate Phase 2 features.
+*   : Handles the document management section. It has been significantly revamped to integrate the new , , ,  (updated), and .
+*   : Manages the analytics section, including charts and trend indicators. It has been enhanced as part of Phase 2.
+*   : Displays key metrics with AI insights and trend indicators, enhanced to include hover animations and click details.
+*   : Implements natural language search with AI-powered suggestions and voice input. Updated multiple times to meet new specifications.
+*   : Handles drag & drop file uploads with progress indication and AI processing status.
+*   : Provides a chat-like interface for AI conversations, including confidence indicators and quick action suggestions.
+*   : A Zustand store for managing global application state, particularly for real-time updates and complex data flow in Phase 2.
+*   : The FastAPI backend application. It defines API routes ( prefix), handles MongoDB connection, and includes basic CRUD operations (e.g., ). It's set up with CORS middleware.
+</code_architecture>
+
+<pending_tasks>
+-   Address persistent frontend memory heap limit errors and ensure stable application loading.
+-   Integrate backend services (FastAPI/MongoDB) to replace all mock data.
+-   Implement WebSocket connections for real-time updates as per Phase 2 requirements.
+-   Implement sophisticated animations using Framer Motion.
+-   Develop advanced error handling and performance optimizations for Phase 2.
+-   Verify all Phase 2 technical and UX goals, particularly predictive charts and context-aware conversation system.
+</pending_tasks>
+
+<current_work>
+Immediately before this summary, the AI engineer was focused on a detailed re-implementation of the **Document Management page**. This was a pivot after encountering persistent frontend memory (heap limit) issues when trying to load the broader Phase 2 enhancements.
+
+The current work involves:
+1.  **Creation of **: A new, dedicated mock data file for the advanced document management features.
+2.  **Development of new UI Components**:
+    *   : A drag-and-drop area with mock AI classification preview, real-time file type detection, auto-categorization, and progress indicators for each file.
+    *   : A horizontal progress visualization to show mocked AI processing stages (Upload, AI Scan, Extract, Analyze, Complete) with confidence meters and expandable stage details.
+    *   : A component to display document previews with mocked AI insights, color-coded risk level indicators, and extracted metadata.
+    *   : A panel to display mock AI-detected document gaps, audit phase context, and upload recommendations.
+    *   : An updated version of the smart search bar, tailored for document management with natural language input and mock AI query suggestions.
+3.  **Integration into **: The main  file has been updated to integrate all these newly created components, creating a comprehensive and intelligent document management interface.
+
+The last action recorded was the AI engineer preparing to take a screenshot of the enhanced Document Management page to verify its appearance and functionality, after integrating these new components and restarting the frontend.
+</current_work>
+
+<optional_next_step>
+Take a screenshot of the enhanced  page to verify the new Document Management features and address the persistent frontend memory issue.
+</optional_next_step>
