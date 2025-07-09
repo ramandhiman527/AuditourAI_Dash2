@@ -124,14 +124,9 @@ const DocumentManagement = () => {
   };
 
   return (
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className="p-6 space-y-6"
-    >
+    <div className="p-6 space-y-6">
       {/* Header */}
-      <motion.div variants={itemVariants}>
+      <div>
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">Document Management</h1>
