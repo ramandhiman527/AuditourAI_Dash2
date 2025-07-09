@@ -1,214 +1,306 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { 
   FileText, 
   File, 
   Filter,
   Search,
-  MoreVertical,
-  Download,
-  Eye,
-  Trash2,
+  Upload,
   Brain,
-  Clock,
+  TrendingUp,
+  AlertTriangle,
   CheckCircle,
-  AlertCircle
+  BarChart3,
+  Settings,
+  RefreshCw
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
-import { Input } from './ui/input';
-import { 
-  DropdownMenu, 
-  DropdownMenuContent, 
-  DropdownMenuItem, 
-  DropdownMenuTrigger 
-} from './ui/dropdown-menu';
-import { mockDocuments } from '../data/mockData';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+
+// Import enhanced components
+import AIUploadZone from './AIUploadZone';
+import ProcessingPipelineVisualization from './ProcessingPipelineVisualization';
+import DocumentGrid from './DocumentGrid';
+import AISearchBar from './AISearchBar';
+import MissingDocsAlert from './MissingDocsAlert';
+
+// Import mock data
+import { mockDocuments, mockProcessingPipeline, mockMissingDocuments } from '../data/documentMockData';
 
 const DocumentManagement = () => {
   const [documents, setDocuments] = useState(mockDocuments);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filterStatus, setFilterStatus] = useState('all');
+  const [processingItems, setProcessingItems] = useState(mockProcessingPipeline);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchFilters, setSearchFilters] = useState({});
+  const [selectedView, setSelectedView] = useState('grid');
+  const [stats, setStats] = useState({
+    total: mockDocuments.length,
+    analyzed: mockDocuments.filter(d => d.status === 'analyzed').length,
+    processing: mockDocuments.filter(d => d.status === 'processing').length,
+    highRisk: mockDocuments.filter(d => d.aiRiskLevel === 'high').length,
+    avgConfidence: Math.round(
+      mockDocuments.reduce((acc, doc) => acc + doc.aiConfidence, 0) / mockDocuments.length
+    )
+  });
 
-  const getFileIcon = (type) => {
-    switch (type) {
-      case 'pdf': return <FileText className="w-5 h-5 text-red-500" />;
-      case 'docx': return <File className="w-5 h-5 text-blue-500" />;
-      case 'xlsx': return <File className="w-5 h-5 text-green-500" />;
-      default: return <File className="w-5 h-5 text-gray-500" />;
+  const handleFileUpload = (files) => {
+    console.log('Files uploaded:', files);
+    // Add new files to processing pipeline
+    const newProcessingItems = Array.from(files).map((file, index) => ({
+      id: Date.now() + index,
+      fileName: file.name,
+      stage: 'upload',
+      stageIndex: 0,
+      progress: 0,
+      confidence: 0,
+      aiClassification: 'Analyzing...',
+      estimatedTime: 'Processing...',
+      extractedData: null,
+      errors: []
+    }));
+    
+    setProcessingItems(prev => [...prev, ...newProcessingItems]);
+  };
+
+  const handleSearch = (query, filters) => {
+    setSearchQuery(query);
+    setSearchFilters(filters);
+    console.log('Search:', query, 'Filters:', filters);
+  };
+
+  const handleDocumentAction = (action, document) => {
+    console.log('Document action:', action, document);
+    switch (action) {
+      case 'view':
+        // Open document viewer
+        break;
+      case 'download':
+        // Download document
+        break;
+      case 'analyze':
+        // Re-analyze document
+        break;
+      case 'delete':
+        // Delete document
+        setDocuments(prev => prev.filter(d => d.id !== document.id));
+        break;
+      default:
+        break;
     }
   };
 
-  const getStatusIcon = (status) => {
-    switch (status) {
-      case 'completed': return <CheckCircle className="w-4 h-4 text-green-500" />;
-      case 'analyzing': return <Brain className="w-4 h-4 text-purple-500 animate-pulse" />;
-      case 'queued': return <Clock className="w-4 h-4 text-yellow-500" />;
-      default: return <AlertCircle className="w-4 h-4 text-gray-500" />;
-    }
-  };
-
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'completed': return 'bg-green-100 text-green-700';
-      case 'analyzing': return 'bg-purple-100 text-purple-700';
-      case 'queued': return 'bg-yellow-100 text-yellow-700';
-      default: return 'bg-gray-100 text-gray-700';
-    }
+  const handleUploadForMissingDoc = (documentType) => {
+    console.log('Upload for missing document:', documentType);
+    // Open upload modal for specific document type
   };
 
   const filteredDocuments = documents.filter(doc => {
-    const matchesSearch = doc.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         doc.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-    const matchesFilter = filterStatus === 'all' || doc.aiStatus === filterStatus;
-    return matchesSearch && matchesFilter;
+    if (!searchQuery) return true;
+    
+    const queryLower = searchQuery.toLowerCase();
+    return (
+      doc.name.toLowerCase().includes(queryLower) ||
+      doc.category.toLowerCase().includes(queryLower) ||
+      doc.extractedMetadata.vendor?.toLowerCase().includes(queryLower) ||
+      doc.tags.some(tag => tag.toLowerCase().includes(queryLower))
+    );
   });
 
-  const handleAction = (action, docId) => {
-    console.log(`Action: ${action} on document ${docId}`);
-    // Mock actions
-    if (action === 'analyze') {
-      setDocuments(docs => 
-        docs.map(doc => 
-          doc.id === docId 
-            ? { ...doc, aiStatus: 'analyzing', status: 'processing' }
-            : doc
-        )
-      );
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
     }
   };
 
-  return (
-    <div className="p-6 space-y-6">
-      {/* Header */}
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-gray-900">Document Management</h1>
-        <Button className="bg-indigo-600 hover:bg-indigo-700">
-          <FileText className="w-4 h-4 mr-2" />
-          Upload Documents
-        </Button>
-      </div>
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
 
-      {/* Search and Filter */}
-      <div className="flex space-x-4">
-        <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-          <Input
-            placeholder="Search documents..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10"
-          />
-        </div>
-        
-        <div className="flex space-x-2">
-          {['all', 'completed', 'analyzing', 'queued'].map(status => (
-            <Button
-              key={status}
-              variant={filterStatus === status ? 'default' : 'outline'}
-              size="sm"
-              onClick={() => setFilterStatus(status)}
-              className="capitalize"
-            >
-              {status === 'all' ? 'All' : status}
+  return (
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="p-6 space-y-6"
+    >
+      {/* Header */}
+      <motion.div variants={itemVariants}>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">Document Management</h1>
+            <p className="text-gray-600 mt-1">AI-powered document analysis and management</p>
+          </div>
+          
+          <div className="flex items-center space-x-4">
+            <Badge variant="secondary" className="bg-blue-100 text-blue-700">
+              <Brain className="w-3 h-3 mr-1" />
+              AI Enhanced
+            </Badge>
+            <Button variant="outline" size="sm">
+              <Settings className="w-4 h-4 mr-1" />
+              Settings
             </Button>
+            <Button variant="outline" size="sm">
+              <RefreshCw className="w-4 h-4 mr-1" />
+              Refresh
+            </Button>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Statistics Overview */}
+      <motion.div variants={itemVariants}>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          {[
+            { label: 'Total Documents', value: stats.total, icon: FileText, color: 'text-blue-600' },
+            { label: 'Analyzed', value: stats.analyzed, icon: CheckCircle, color: 'text-green-600' },
+            { label: 'Processing', value: stats.processing, icon: RefreshCw, color: 'text-yellow-600' },
+            { label: 'High Risk', value: stats.highRisk, icon: AlertTriangle, color: 'text-red-600' },
+            { label: 'Avg AI Confidence', value: `${stats.avgConfidence}%`, icon: Brain, color: 'text-purple-600' }
+          ].map((stat, index) => (
+            <Card key={index} className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-gray-600">{stat.label}</p>
+                    <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+                  </div>
+                  <stat.icon className={`w-6 h-6 ${stat.color}`} />
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
-      </div>
+      </motion.div>
 
-      {/* Document Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredDocuments.map((doc) => (
-          <Card key={doc.id} className="hover:shadow-lg transition-shadow duration-200">
-            <CardHeader className="pb-3">
-              <div className="flex items-start justify-between">
-                <div className="flex items-center space-x-3">
-                  {getFileIcon(doc.type)}
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-medium text-gray-900 truncate">{doc.name}</h3>
-                    <p className="text-sm text-gray-500">{doc.size}</p>
-                  </div>
-                </div>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="sm">
-                      <MoreVertical className="w-4 h-4" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent>
-                    <DropdownMenuItem onClick={() => handleAction('view', doc.id)}>
-                      <Eye className="w-4 h-4 mr-2" />
-                      View
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => handleAction('download', doc.id)}>
-                      <Download className="w-4 h-4 mr-2" />
-                      Download
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => handleAction('analyze', doc.id)}>
-                      <Brain className="w-4 h-4 mr-2" />
-                      Re-analyze
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => handleAction('delete', doc.id)}>
-                      <Trash2 className="w-4 h-4 mr-2" />
-                      Delete
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </div>
-            </CardHeader>
-            
-            <CardContent>
-              {/* Status */}
-              <div className="flex items-center justify-between mb-3">
-                <Badge variant="secondary" className={getStatusColor(doc.aiStatus)}>
-                  {getStatusIcon(doc.aiStatus)}
-                  <span className="ml-1 capitalize">{doc.aiStatus}</span>
-                </Badge>
-                {doc.aiScore && (
-                  <div className="text-sm text-gray-600">
-                    Score: <span className="font-medium">{doc.aiScore}%</span>
-                  </div>
+      {/* Smart Search */}
+      <motion.div variants={itemVariants}>
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center space-x-2">
+              <Search className="w-5 h-5" />
+              <span>Smart Document Search</span>
+              <Badge variant="secondary" className="bg-indigo-100 text-indigo-700">
+                Natural Language
+              </Badge>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <AISearchBar
+              placeholder="Find invoices over $10k with missing approvals"
+              aiSuggestions={true}
+              filters={['type', 'risk', 'status', 'date']}
+              onSearch={handleSearch}
+              onFilterChange={setSearchFilters}
+            />
+          </CardContent>
+        </Card>
+      </motion.div>
+
+      {/* Main Content Tabs */}
+      <motion.div variants={itemVariants}>
+        <Tabs defaultValue="documents" className="w-full">
+          <TabsList className="grid w-full grid-cols-4">
+            <TabsTrigger value="documents" className="flex items-center space-x-2">
+              <FileText className="w-4 h-4" />
+              <span>Documents</span>
+            </TabsTrigger>
+            <TabsTrigger value="upload" className="flex items-center space-x-2">
+              <Upload className="w-4 h-4" />
+              <span>Upload</span>
+            </TabsTrigger>
+            <TabsTrigger value="processing" className="flex items-center space-x-2">
+              <RefreshCw className="w-4 h-4" />
+              <span>Processing</span>
+            </TabsTrigger>
+            <TabsTrigger value="missing" className="flex items-center space-x-2">
+              <AlertTriangle className="w-4 h-4" />
+              <span>Missing</span>
+            </TabsTrigger>
+          </TabsList>
+
+          {/* Documents Tab */}
+          <TabsContent value="documents" className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <span className="text-sm text-gray-600">
+                  Showing {filteredDocuments.length} of {documents.length} documents
+                </span>
+                {searchQuery && (
+                  <Badge variant="outline">
+                    Search: "{searchQuery}"
+                  </Badge>
                 )}
               </div>
-
-              {/* AI Summary */}
-              <div className="bg-gray-50 rounded-lg p-3 mb-3">
-                <p className="text-xs text-gray-600">{doc.aiSummary}</p>
+              
+              <div className="flex items-center space-x-2">
+                <Button
+                  variant={selectedView === 'grid' ? 'default' : 'outline'}
+                  size="sm"
+                  onClick={() => setSelectedView('grid')}
+                >
+                  <BarChart3 className="w-4 h-4 mr-1" />
+                  Grid
+                </Button>
+                <Button
+                  variant={selectedView === 'list' ? 'default' : 'outline'}
+                  size="sm"
+                  onClick={() => setSelectedView('list')}
+                >
+                  <FileText className="w-4 h-4 mr-1" />
+                  List
+                </Button>
               </div>
+            </div>
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-1 mb-3">
-                {doc.tags.map((tag, index) => (
-                  <Badge key={index} variant="outline" className="text-xs">
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
+            <DocumentGrid
+              documents={filteredDocuments}
+              aiAnalysis={true}
+              groupBy="risk-level"
+              showInsights={true}
+              onDocumentAction={handleDocumentAction}
+            />
+          </TabsContent>
 
-              {/* Upload Date */}
-              <div className="text-xs text-gray-500">
-                Uploaded: {new Date(doc.uploadDate).toLocaleDateString()}
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+          {/* Upload Tab */}
+          <TabsContent value="upload" className="space-y-4">
+            <AIUploadZone
+              onUpload={handleFileUpload}
+              aiClassification={true}
+              supportedTypes={['pdf', 'docx', 'xlsx', 'csv']}
+              maxSize="50MB"
+              maxFiles={10}
+            />
+          </TabsContent>
 
-      {/* Empty State */}
-      {filteredDocuments.length === 0 && (
-        <div className="text-center py-12">
-          <FileText className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-gray-900 mb-2">No documents found</h3>
-          <p className="text-gray-600 mb-4">
-            {searchTerm ? 'Try adjusting your search terms' : 'Upload your first document to get started'}
-          </p>
-          <Button variant="outline">
-            <FileText className="w-4 h-4 mr-2" />
-            Upload Document
-          </Button>
-        </div>
-      )}
-    </div>
+          {/* Processing Tab */}
+          <TabsContent value="processing" className="space-y-4">
+            <ProcessingPipelineVisualization
+              documents={processingItems}
+              showConfidence={true}
+              expandableDetails={true}
+            />
+          </TabsContent>
+
+          {/* Missing Documents Tab */}
+          <TabsContent value="missing" className="space-y-4">
+            <MissingDocsAlert
+              auditPhase="fieldwork"
+              missingDocs={mockMissingDocuments}
+              recommendations={true}
+              onUploadClick={handleUploadForMissingDoc}
+            />
+          </TabsContent>
+        </Tabs>
+      </motion.div>
+    </motion.div>
   );
 };
 
