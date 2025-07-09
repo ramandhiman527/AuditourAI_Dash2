@@ -21,7 +21,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 
 // Import enhanced components
 import AIUploadZone from './AIUploadZone';
-import ProcessingPipelineVisualization from './ProcessingPipelineVisualization';
+import ProcessingPipeline from './ProcessingPipeline';
 import DocumentGrid from './DocumentGrid';
 import AISearchBar from './AISearchBar';
 import MissingDocsAlert from './MissingDocsAlert';
