@@ -226,6 +226,33 @@ export const mockNavigationItems = [
   },
   {
     id: 4,
+    title: "Predictive",
+    icon: "TrendingUp",
+    href: "/predictive",
+    active: false,
+    aiPriority: "high",
+    aiNote: "New predictions ready"
+  },
+  {
+    id: 5,
+    title: "Automation",
+    icon: "Zap",
+    href: "/automation",
+    active: false,
+    aiPriority: "medium",
+    aiNote: "3 rules optimized"
+  },
+  {
+    id: 6,
+    title: "AI Insights",
+    icon: "Brain",
+    href: "/ai-insights",
+    active: false,
+    aiPriority: "high",
+    aiNote: "12 new insights"
+  },
+  {
+    id: 7,
     title: "Risk Assessment",
     icon: "Shield",
     href: "/risk",
@@ -234,7 +261,7 @@ export const mockNavigationItems = [
     aiNote: "Risk level changed"
   },
   {
-    id: 5,
+    id: 8,
     title: "Reports",
     icon: "FileBarChart",
     href: "/reports",
@@ -243,7 +270,7 @@ export const mockNavigationItems = [
     aiNote: "3 new reports"
   },
   {
-    id: 6,
+    id: 9,
     title: "Settings",
     icon: "Settings",
     href: "/settings",
