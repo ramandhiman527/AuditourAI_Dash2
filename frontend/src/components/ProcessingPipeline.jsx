@@ -15,8 +15,13 @@ import { Badge } from './ui/badge';
 import { Progress } from './ui/progress';
 import useAuditStore from '../store/useAuditStore';
 
-const ProcessingPipeline = () => {
-  const { processingPipeline, updateProcessingPipeline } = useAuditStore();
+const ProcessingPipeline = ({ 
+  documents = [], 
+  showConfidence = false, 
+  expandableDetails = false 
+}) => {
+  // Use the passed documents instead of store
+  const processingPipeline = documents;
 
   const getStageIcon = (stage) => {
     switch (stage) {
