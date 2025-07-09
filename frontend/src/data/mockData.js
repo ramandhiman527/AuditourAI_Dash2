@@ -150,32 +150,38 @@ export const mockAIConversation = [
   {
     id: 1,
     type: "ai",
-    message: "Hello! I'm your AI audit assistant. I've analyzed your latest documents and found some interesting patterns. Would you like me to summarize the key findings?",
-    timestamp: "10:30 AM"
+    content: "Hello! I'm your AI audit assistant. I've analyzed your latest documents and found some interesting patterns. Would you like me to summarize the key findings?",
+    timestamp: "10:30 AM",
+    confidence: 95,
+    liked: null
   },
   {
     id: 2,
     type: "user",
-    message: "Yes, please give me a summary of the financial audit findings.",
+    content: "Yes, please give me a summary of the financial audit findings.",
     timestamp: "10:32 AM"
   },
   {
     id: 3,
     type: "ai",
-    message: "Based on the Financial_Audit_Q3_2024.pdf analysis:\n\n• Overall compliance score: 95%\n• 3 minor discrepancies identified\n• Cash flow analysis shows strong liquidity\n• Recommended actions: Update depreciation schedule, review expense classifications\n\nWould you like me to elaborate on any specific area?",
-    timestamp: "10:32 AM"
+    content: "Based on the Financial_Audit_Q3_2024.pdf analysis:\n\n• Overall compliance score: 95%\n• 3 minor discrepancies identified\n• Cash flow analysis shows strong liquidity\n• Recommended actions: Update depreciation schedule, review expense classifications\n\nWould you like me to elaborate on any specific area?",
+    timestamp: "10:32 AM",
+    confidence: 92,
+    liked: true
   },
   {
     id: 4,
     type: "user",
-    message: "Tell me more about the cash flow analysis.",
+    content: "Tell me more about the cash flow analysis.",
     timestamp: "10:35 AM"
   },
   {
     id: 5,
     type: "ai",
-    message: "The cash flow analysis reveals:\n\n• Operating cash flow increased 18% QoQ\n• Strong working capital management\n• Debt-to-equity ratio improved to 0.45\n• Projected cash position remains healthy for next 12 months\n\nAI recommendation: Consider expanding investment in growth initiatives given the strong cash position.",
-    timestamp: "10:35 AM"
+    content: "The cash flow analysis reveals:\n\n• Operating cash flow increased 18% QoQ\n• Strong working capital management\n• Debt-to-equity ratio improved to 0.45\n• Projected cash position remains healthy for next 12 months\n\nAI recommendation: Consider expanding investment in growth initiatives given the strong cash position.",
+    timestamp: "10:35 AM",
+    confidence: 88,
+    liked: null
   }
 ];
 
