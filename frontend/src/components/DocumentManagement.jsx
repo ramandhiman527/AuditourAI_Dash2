@@ -294,8 +294,8 @@ const DocumentManagement = () => {
             />
           </TabsContent>
         </Tabs>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 };
 
