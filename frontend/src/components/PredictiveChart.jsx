@@ -1,16 +1,6 @@
-import React, { useState, useMemo } from 'react';
-import { motion } from 'framer-motion';
-import Plot from 'react-plotly.js';
-import { 
-  TrendingUp, 
-  TrendingDown, 
-  AlertTriangle, 
-  Brain, 
-  Target,
-  BarChart3,
-  Eye,
-  EyeOff
-} from 'lucide-react';
+import React from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
