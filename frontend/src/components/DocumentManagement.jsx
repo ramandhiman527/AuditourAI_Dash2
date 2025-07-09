@@ -148,10 +148,10 @@ const DocumentManagement = () => {
             </Button>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Statistics Overview */}
-      <motion.div variants={itemVariants}>
+      <div>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           {[
             { label: 'Total Documents', value: stats.total, icon: FileText, color: 'text-blue-600' },
