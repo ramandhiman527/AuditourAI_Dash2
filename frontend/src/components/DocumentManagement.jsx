@@ -282,7 +282,7 @@ const DocumentManagement = () => {
 
           {/* Processing Tab */}
           <TabsContent value="processing" className="space-y-4">
-            <ProcessingPipelineVisualization
+            <ProcessingPipeline
               documents={processingItems}
               showConfidence={true}
               expandableDetails={true}
