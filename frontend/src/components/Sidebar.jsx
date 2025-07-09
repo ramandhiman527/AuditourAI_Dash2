@@ -27,6 +27,9 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
     LayoutDashboard,
     FileText,
     BarChart3,
+    TrendingUp,
+    Zap,
+    Brain,
     Shield,
     FileBarChart,
     Settings
