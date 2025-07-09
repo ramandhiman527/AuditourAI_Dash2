@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { Search, Bell, User, Sparkles, Activity } from 'lucide-react';
-import { Input } from './ui/input';
+import React from 'react';
+import { Bell, User, Sparkles, Activity } from 'lucide-react';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
@@ -12,20 +11,12 @@ import {
   DropdownMenuSeparator 
 } from './ui/dropdown-menu';
 import { mockSearchSuggestions, mockUserProfile, mockAIStatus } from '../data/mockData';
+import AISearchBar from './AISearchBar';
 
 const Header = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [showSuggestions, setShowSuggestions] = useState(false);
-
-  const filteredSuggestions = mockSearchSuggestions.filter(suggestion =>
-    suggestion.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
   const handleSearch = (query) => {
-    setSearchQuery(query);
-    setShowSuggestions(false);
-    // Mock search action
     console.log('Searching for:', query);
+    // Implement search logic here
   };
 
   const getStatusColor = (status) => {
@@ -51,44 +42,11 @@ const Header = () => {
         </div>
 
         {/* Search Bar */}
-        <div className="flex-1 max-w-2xl mx-8 relative">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-            <Input
-              placeholder="Search documents, insights, or ask AI..."
-              value={searchQuery}
-              onChange={(e) => {
-                setSearchQuery(e.target.value);
-                setShowSuggestions(true);
-              }}
-              onFocus={() => setShowSuggestions(true)}
-              onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-              className="pl-10 pr-4 py-2 w-full border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-            />
-            <Badge 
-              variant="secondary" 
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-indigo-100 text-indigo-700 hover:bg-indigo-200 transition-colors"
-            >
-              AI
-            </Badge>
-          </div>
-
-          {/* Search Suggestions */}
-          {showSuggestions && filteredSuggestions.length > 0 && (
-            <div className="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-lg shadow-lg mt-1 max-h-64 overflow-y-auto z-50">
-              {filteredSuggestions.map((suggestion, index) => (
-                <div
-                  key={index}
-                  className="px-4 py-3 hover:bg-gray-50 cursor-pointer transition-colors flex items-center space-x-2"
-                  onClick={() => handleSearch(suggestion)}
-                >
-                  <Search className="w-4 h-4 text-gray-400" />
-                  <span className="text-sm text-gray-700">{suggestion}</span>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+        <AISearchBar
+          placeholder="Search documents, insights, or ask AI..."
+          onSearch={handleSearch}
+          suggestions={mockSearchSuggestions}
+        />
 
         {/* Right Section */}
         <div className="flex items-center space-x-4">
