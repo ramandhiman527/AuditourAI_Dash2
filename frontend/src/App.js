@@ -5,7 +5,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import EnhancedDashboard from './components/EnhancedDashboard';
 import DocumentManagement from './components/DocumentManagement';
-import Analytics from './components/Analytics';
+import IntelligentAnalytics from './components/IntelligentAnalytics';
 
 // Phase 2 Enhanced Pages
 import PredictiveAnalyticsPage from './components/PredictiveAnalyticsPage';
