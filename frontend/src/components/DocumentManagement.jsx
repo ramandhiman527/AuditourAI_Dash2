@@ -197,10 +197,10 @@ const DocumentManagement = () => {
             />
           </CardContent>
         </Card>
-      </motion.div>
+      </div>
 
       {/* Main Content Tabs */}
-      <motion.div variants={itemVariants}>
+      <div>
         <Tabs defaultValue="documents" className="w-full">
           <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="documents" className="flex items-center space-x-2">
