@@ -33,7 +33,7 @@ function App() {
               <Route path="/" element={<EnhancedDashboard />} />
               <Route path="/dashboard" element={<EnhancedDashboard />} />
               <Route path="/documents" element={<DocumentManagement />} />
-              <Route path="/analytics" element={<Analytics />} />
+              <Route path="/analytics" element={<IntelligentAnalytics />} />
               <Route path="/predictive" element={<PredictiveAnalyticsPage />} />
               <Route path="/automation" element={<AutomationCenter />} />
               <Route path="/ai-insights" element={<AIInsightsPage />} />
