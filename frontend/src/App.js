@@ -4,7 +4,7 @@ import './App.css';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import EnhancedDashboard from './components/EnhancedDashboard';
-import DocumentManagementMinimal from './components/DocumentManagementMinimal';
+import DocumentManagement from './components/DocumentManagement';
 import Analytics from './components/Analytics';
 
 // Phase 2 Enhanced Pages
