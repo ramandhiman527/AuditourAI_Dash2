@@ -13,7 +13,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Progress } from './ui/progress';
-import useAuditStore from '../store/useAuditStore';
+// import useAuditStore from '../store/useAuditStore'; // Temporarily removed to fix memory issues
 
 const ProcessingPipeline = ({ 
   documents = [], 
