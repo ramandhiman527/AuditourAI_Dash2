@@ -127,7 +127,10 @@ const ReportsPage = () => {
       {/* Header */}
       <div className="flex justify-between items-center">
         <div className="flex items-center space-x-3">
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1
+            className="text-3xl font-bold"
+            style={{ color: "var(--text-primary)" }}
+          >
             Intelligent Reports
           </h1>
           <Badge variant="secondary" className="bg-purple-100 text-purple-700">
