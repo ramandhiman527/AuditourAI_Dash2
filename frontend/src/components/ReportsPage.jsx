@@ -199,29 +199,61 @@ const ReportsPage = () => {
                     {/* Metrics for completed reports */}
                     {report.status === "completed" && (
                       <div className="grid grid-cols-2 gap-3 text-sm">
-                        <div className="bg-gray-50 p-2 rounded">
-                          <div className="font-medium text-gray-900">
+                        <div
+                          className="p-2 rounded"
+                          style={{ backgroundColor: "var(--card-background)" }}
+                        >
+                          <div
+                            className="font-medium"
+                            style={{ color: "var(--text-primary)" }}
+                          >
                             {report.pages}
                           </div>
-                          <div className="text-gray-600">Pages</div>
+                          <div style={{ color: "var(--text-secondary)" }}>
+                            Pages
+                          </div>
                         </div>
-                        <div className="bg-gray-50 p-2 rounded">
-                          <div className="font-medium text-gray-900">
+                        <div
+                          className="p-2 rounded"
+                          style={{ backgroundColor: "var(--card-background)" }}
+                        >
+                          <div
+                            className="font-medium"
+                            style={{ color: "var(--text-primary)" }}
+                          >
                             {report.findings}
                           </div>
-                          <div className="text-gray-600">Findings</div>
+                          <div style={{ color: "var(--text-secondary)" }}>
+                            Findings
+                          </div>
                         </div>
-                        <div className="bg-gray-50 p-2 rounded">
-                          <div className="font-medium text-gray-900">
+                        <div
+                          className="p-2 rounded"
+                          style={{ backgroundColor: "var(--card-background)" }}
+                        >
+                          <div
+                            className="font-medium"
+                            style={{ color: "var(--text-primary)" }}
+                          >
                             {report.compliance}%
                           </div>
-                          <div className="text-gray-600">Compliance</div>
+                          <div style={{ color: "var(--text-secondary)" }}>
+                            Compliance
+                          </div>
                         </div>
-                        <div className="bg-gray-50 p-2 rounded">
-                          <div className="font-medium text-gray-900">
+                        <div
+                          className="p-2 rounded"
+                          style={{ backgroundColor: "var(--card-background)" }}
+                        >
+                          <div
+                            className="font-medium"
+                            style={{ color: "var(--text-primary)" }}
+                          >
                             {report.aiConfidence}%
                           </div>
-                          <div className="text-gray-600">AI Confidence</div>
+                          <div style={{ color: "var(--text-secondary)" }}>
+                            AI Confidence
+                          </div>
                         </div>
                       </div>
                     )}
