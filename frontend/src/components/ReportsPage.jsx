@@ -292,7 +292,7 @@ const ReportsPage = () => {
                       </div>
                     )}
 
-                                        {/* Actions */}
+                    {/* Actions */}
                     <div className="flex space-x-2 pt-2 border-t">
                       {report.status === "completed" ? (
                         <>
@@ -329,7 +329,7 @@ const ReportsPage = () => {
                         >
                           <Calendar className="w-3 h-3 mr-1" />
                           Scheduled
-                        </Button>
+                        </ThemedButton>
                       )}
                     </div>
                   </div>
