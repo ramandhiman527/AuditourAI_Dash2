@@ -292,25 +292,25 @@ const ReportsPage = () => {
                       </div>
                     )}
 
-                    {/* Actions */}
+                                        {/* Actions */}
                     <div className="flex space-x-2 pt-2 border-t">
                       {report.status === "completed" ? (
                         <>
-                          <Button
+                          <ThemedButton
                             size="sm"
                             onClick={() => handleDownloadReport(report)}
                             className="flex-1"
                           >
                             <Download className="w-3 h-3 mr-1" />
                             Download
-                          </Button>
-                          <Button variant="outline" size="sm">
+                          </ThemedButton>
+                          <ThemedButton variant="secondary" size="sm">
                             <Eye className="w-3 h-3 mr-1" />
                             Preview
-                          </Button>
-                          <Button variant="outline" size="sm">
+                          </ThemedButton>
+                          <ThemedButton variant="secondary" size="sm">
                             <Share className="w-3 h-3" />
-                          </Button>
+                          </ThemedButton>
                         </>
                       ) : report.status === "generating" ? (
                         <div className="flex-1 text-center">
@@ -321,8 +321,8 @@ const ReportsPage = () => {
                           />
                         </div>
                       ) : (
-                        <Button
-                          variant="outline"
+                        <ThemedButton
+                          variant="secondary"
                           size="sm"
                           className="flex-1"
                           disabled
