@@ -163,25 +163,25 @@ const ReportsPage = () => {
         </TabsList>
 
         <TabsContent value="all" className="space-y-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {mockReports.map((report) => (
-              <Card
+              <ThemedCard
                 key={report.id}
-                className="hover:shadow-md transition-shadow"
+                className="transition-all duration-300 hover:transform hover:-translate-y-1"
               >
-                <CardHeader>
-                  <CardTitle className="flex items-start justify-between">
+                <ThemedCardHeader>
+                  <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <h3 className="font-semibold text-lg mb-2">
+                      <ThemedCardTitle className="mb-2">
                         {report.title}
-                      </h3>
-                      <p className="text-sm text-gray-600 mb-3">
+                      </ThemedCardTitle>
+                      <ThemedCardSubtitle className="mb-3">
                         {report.description}
-                      </p>
+                      </ThemedCardSubtitle>
                     </div>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
+                  </div>
+                </ThemedCardHeader>
+                <ThemedCardContent>
                   <div className="space-y-4">
                     {/* Status */}
                     <div className="flex items-center justify-between">
