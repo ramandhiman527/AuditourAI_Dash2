@@ -7,6 +7,7 @@ import EnhancedDashboard from "./components/EnhancedDashboard";
 import DocumentManagement from "./components/DocumentManagement";
 import IntelligentAnalytics from "./components/IntelligentAnalytics";
 import AdvancedAnalytics from "./components/AdvancedAnalytics";
+import RiskAssessmentCenter from "./components/RiskAssessmentCenter";
 
 // Phase 2 Enhanced Pages
 import PredictiveAnalyticsPage from "./components/PredictiveAnalyticsPage";
