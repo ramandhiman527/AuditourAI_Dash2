@@ -16,6 +16,7 @@ import {
   mockAIStatus,
 } from "../data/mockData";
 import AISearchBar from "./AISearchBar";
+import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   const handleSearch = (query) => {
