@@ -59,6 +59,7 @@ function App() {
                 <Route path="/risk" element={<RiskAssessmentCenter />} />
                 <Route path="/reports" element={<ReportsPage />} />
                 <Route path="/settings" element={<SettingsPage />} />
+                <Route path="/theme-showcase" element={<ThemeShowcase />} />
               </Routes>
             </main>
           </div>
