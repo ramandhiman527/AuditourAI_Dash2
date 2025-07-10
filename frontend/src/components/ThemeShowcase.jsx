@@ -455,6 +455,310 @@ const ThemeShowcase = () => {
           </div>
         </ThemedCardContent>
       </ThemedCard>
+
+      {/* Dark Theme Specific Features */}
+      {isDark && (
+        <ThemedCard>
+          <ThemedCardHeader>
+            <ThemedCardTitle className="flex items-center">
+              <Contrast
+                className="w-5 h-5 mr-2"
+                style={{ color: "var(--primary-green)" }}
+              />
+              Dark Theme Excellence
+            </ThemedCardTitle>
+            <ThemedCardSubtitle>
+              Visually striking dark design with maximum text readability
+            </ThemedCardSubtitle>
+          </ThemedCardHeader>
+          <ThemedCardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <h4
+                  className="font-medium"
+                  style={{ color: "var(--text-primary)" }}
+                >
+                  Enhanced Readability
+                </h4>
+                <div className="space-y-3">
+                  <div
+                    className="p-4 rounded-lg"
+                    style={{ backgroundColor: "var(--card-background)" }}
+                  >
+                    <h5
+                      className="font-medium mb-2"
+                      style={{ color: "var(--text-primary)" }}
+                    >
+                      Primary Text (#FFFFFF)
+                    </h5>
+                    <p style={{ color: "var(--text-primary)" }}>
+                      Bright white text provides maximum contrast against the
+                      deep background, ensuring excellent readability for
+                      prolonged usage.
+                    </p>
+                  </div>
+                  <div
+                    className="p-4 rounded-lg"
+                    style={{ backgroundColor: "var(--card-background)" }}
+                  >
+                    <h5
+                      className="font-medium mb-2"
+                      style={{ color: "var(--text-primary)" }}
+                    >
+                      Secondary Text (#B0B0B0)
+                    </h5>
+                    <p style={{ color: "var(--text-secondary)" }}>
+                      Softer gray text maintains readability while creating
+                      visual hierarchy and reducing eye strain during extended
+                      use.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <h4
+                  className="font-medium"
+                  style={{ color: "var(--text-primary)" }}
+                >
+                  Rich Background Colors
+                </h4>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="text-center">
+                    <div
+                      className="w-full h-16 rounded-lg mb-2"
+                      style={{ backgroundColor: "var(--background-primary)" }}
+                    />
+                    <p
+                      className="text-xs"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      Primary (#121212)
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <div
+                      className="w-full h-16 rounded-lg mb-2"
+                      style={{ backgroundColor: "var(--background-secondary)" }}
+                    />
+                    <p
+                      className="text-xs"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      Secondary (#1E1E1E)
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <div
+                      className="w-full h-16 rounded-lg mb-2"
+                      style={{ backgroundColor: "var(--card-background)" }}
+                    />
+                    <p
+                      className="text-xs"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      Cards (#1F1F1F)
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <div
+                      className="w-full h-16 rounded-lg mb-2"
+                      style={{
+                        backgroundColor: "var(--card-background-hover)",
+                      }}
+                    />
+                    <p
+                      className="text-xs"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      Hover (#2A2A2A)
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ThemedCardContent>
+        </ThemedCard>
+      )}
+
+      {/* Animation Showcase */}
+      <ThemedCard>
+        <ThemedCardHeader>
+          <ThemedCardTitle className="flex items-center">
+            <Palette
+              className="w-5 h-5 mr-2"
+              style={{ color: "var(--primary-green)" }}
+            />
+            Smooth Animations & Interactions
+          </ThemedCardTitle>
+          <ThemedCardSubtitle>
+            Subtle animations that enhance user experience without distraction
+          </ThemedCardSubtitle>
+        </ThemedCardHeader>
+        <ThemedCardContent>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Hover Effects */}
+            <div className="space-y-3">
+              <h4
+                className="font-medium"
+                style={{ color: "var(--text-primary)" }}
+              >
+                Hover Animations
+              </h4>
+              <div className="space-y-3">
+                <div
+                  className="p-4 rounded-lg transition-all duration-300 cursor-pointer hover:transform hover:-translate-y-1"
+                  style={{
+                    backgroundColor: "var(--card-background)",
+                    border: "1px solid var(--border-light)",
+                  }}
+                >
+                  <p
+                    className="text-sm"
+                    style={{ color: "var(--text-primary)" }}
+                  >
+                    Hover me for elevation effect
+                  </p>
+                </div>
+
+                <ThemedButton className="w-full">
+                  Hover for shimmer animation
+                </ThemedButton>
+              </div>
+            </div>
+
+            {/* Loading States */}
+            <div className="space-y-3">
+              <h4
+                className="font-medium"
+                style={{ color: "var(--text-primary)" }}
+              >
+                Loading Animations
+              </h4>
+              <div className="space-y-3">
+                <ThemedProgress value={progress} animated />
+                <div
+                  className="loading-shimmer h-8 rounded"
+                  style={{ backgroundColor: "var(--card-background)" }}
+                />
+                <div className="flex items-center space-x-2">
+                  <div
+                    className="w-2 h-2 rounded-full animate-pulse"
+                    style={{ backgroundColor: "var(--primary-green)" }}
+                  />
+                  <span
+                    className="text-sm"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    Live indicator
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Theme Transition */}
+            <div className="space-y-3">
+              <h4
+                className="font-medium"
+                style={{ color: "var(--text-primary)" }}
+              >
+                Theme Transitions
+              </h4>
+              <div className="space-y-3">
+                <p
+                  className="text-sm"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  Smooth 300ms transitions when switching themes
+                </p>
+                <ThemedButton
+                  onClick={toggleTheme}
+                  variant="secondary"
+                  className="w-full"
+                >
+                  {isDark ? (
+                    <>
+                      <Sun className="w-4 h-4 mr-2" />
+                      Light Mode
+                    </>
+                  ) : (
+                    <>
+                      <Moon className="w-4 h-4 mr-2" />
+                      Dark Mode
+                    </>
+                  )}
+                </ThemedButton>
+                <div className="text-xs" style={{ color: "var(--text-muted)" }}>
+                  Notice how all elements smoothly transition colors
+                </div>
+              </div>
+            </div>
+          </div>
+        </ThemedCardContent>
+      </ThemedCard>
+
+      {/* Accessibility & Comfort */}
+      <ThemedCard>
+        <ThemedCardHeader>
+          <ThemedCardTitle>Design Philosophy</ThemedCardTitle>
+          <ThemedCardSubtitle>
+            Balancing visual appeal with user comfort and accessibility
+          </ThemedCardSubtitle>
+        </ThemedCardHeader>
+        <ThemedCardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h4
+                className="font-medium mb-3"
+                style={{ color: "var(--text-primary)" }}
+              >
+                {isDark ? "Dark Theme Benefits" : "Light Theme Benefits"}
+              </h4>
+              <ul
+                className="space-y-2 text-sm"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                {isDark ? (
+                  <>
+                    <li>• Reduced eye strain in low-light environments</li>
+                    <li>• Better battery life on OLED displays</li>
+                    <li>• Modern, professional appearance</li>
+                    <li>• Enhanced focus on content</li>
+                    <li>• Comfortable for prolonged usage</li>
+                  </>
+                ) : (
+                  <>
+                    <li>• Excellent readability in bright environments</li>
+                    <li>• Classic, clean professional look</li>
+                    <li>• High contrast for all elements</li>
+                    <li>• Familiar interface patterns</li>
+                    <li>• Universal accessibility</li>
+                  </>
+                )}
+              </ul>
+            </div>
+
+            <div>
+              <h4
+                className="font-medium mb-3"
+                style={{ color: "var(--text-primary)" }}
+              >
+                Technical Implementation
+              </h4>
+              <ul
+                className="space-y-2 text-sm"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                <li>• CSS custom properties for consistent theming</li>
+                <li>• Smooth 300ms transitions for theme switching</li>
+                <li>• High contrast ratios for accessibility compliance</li>
+                <li>• Preserved user preference in localStorage</li>
+                <li>• Automatic system theme detection</li>
+              </ul>
+            </div>
+          </div>
+        </ThemedCardContent>
+      </ThemedCard>
     </div>
   );
 };
