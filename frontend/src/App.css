@@ -1,12 +1,13 @@
 /* AI Audit Dashboard Custom Styles */
+@import "./styles/custom-theme.css";
 
 :root {
-  --primary: #4F46E5;     /* Indigo */
-  --secondary: #10B981;   /* Green */
-  --warning: #F59E0B;     /* Amber */
-  --danger: #EF4444;      /* Red */
-  --gray-50: #F9FAFB;
-  --gray-900: #111827;
+  --primary: #3aa85a; /* Custom Green */
+  --secondary: #3aa85a; /* Custom Green */
+  --warning: #f5a623; /* Custom Orange */
+  --danger: #e94b4b; /* Custom Red */
+  --gray-50: #f9fafb;
+  --gray-900: #3a3a3a;
 }
 
 /* Cards */
@@ -61,27 +62,42 @@
 
 /* Gradient backgrounds */
 .gradient-indigo {
-  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
 }
 
 .gradient-green {
-  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
 }
 
 /* Animation keyframes */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideIn {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 /* Utility classes */
@@ -131,8 +147,12 @@
 }
 
 @keyframes shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 /* Mobile optimizations */
@@ -140,7 +160,7 @@
   .document-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .dashboard-metric-card {
     padding: 1rem;
   }
