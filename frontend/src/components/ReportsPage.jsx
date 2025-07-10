@@ -185,13 +185,10 @@ const ReportsPage = () => {
                   <div className="space-y-4">
                     {/* Status */}
                     <div className="flex items-center justify-between">
-                      <Badge
-                        variant="secondary"
-                        className={getStatusColor(report.status)}
-                      >
+                      <StatusBadge status={report.status}>
                         {getStatusIcon(report.status)}
                         <span className="ml-1 capitalize">{report.status}</span>
-                      </Badge>
+                      </StatusBadge>
                       {report.type && (
                         <Badge variant="outline" className="text-xs">
                           {report.type}
