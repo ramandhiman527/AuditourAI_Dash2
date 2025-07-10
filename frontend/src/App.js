@@ -26,50 +26,54 @@ function App() {
     setSidebarCollapsed(!sidebarCollapsed);
   };
 
-    return (
+  return (
     <ErrorBoundary>
       <ThemeProvider>
         <BrowserRouter>
           <div
             className="App min-h-screen transition-colors duration-300"
-            style={{ backgroundColor: 'var(--background-secondary)' }}
+            style={{ backgroundColor: "var(--background-secondary)" }}
           >
-          <Header />
-          <div className="flex h-[calc(100vh-73px)] relative">
-            {/* Mobile overlay */}
-            {!sidebarCollapsed && (
-              <div
-                className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
-                onClick={toggleSidebar}
-              />
-            )}
+            <Header />
+            <div className="flex h-[calc(100vh-73px)] relative">
+              {/* Mobile overlay */}
+              {!sidebarCollapsed && (
+                <div
+                  className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+                  onClick={toggleSidebar}
+                />
+              )}
 
-            <Sidebar isCollapsed={sidebarCollapsed} onToggle={toggleSidebar} />
-            <main className="flex-1 overflow-auto">
-              <Routes>
-                <Route path="/" element={<EnhancedDashboard />} />
-                <Route path="/dashboard" element={<EnhancedDashboard />} />
-                <Route path="/documents" element={<DocumentManagement />} />
-                <Route path="/analytics" element={<IntelligentAnalytics />} />
-                <Route
-                  path="/advanced-analytics"
-                  element={<AdvancedAnalytics />}
-                />
-                <Route
-                  path="/predictive"
-                  element={<PredictiveAnalyticsPage />}
-                />
-                <Route path="/automation" element={<AutomationCenter />} />
-                <Route path="/ai-insights" element={<AIInsightsPage />} />
-                                <Route path="/risk" element={<RiskAssessmentCenter />} />
-                <Route path="/reports" element={<ReportsPage />} />
-                <Route path="/settings" element={<SettingsPage />} />
-                <Route path="/theme-showcase" element={<ThemeShowcase />} />
-              </Routes>
-            </main>
+              <Sidebar
+                isCollapsed={sidebarCollapsed}
+                onToggle={toggleSidebar}
+              />
+              <main className="flex-1 overflow-auto">
+                <Routes>
+                  <Route path="/" element={<EnhancedDashboard />} />
+                  <Route path="/dashboard" element={<EnhancedDashboard />} />
+                  <Route path="/documents" element={<DocumentManagement />} />
+                  <Route path="/analytics" element={<IntelligentAnalytics />} />
+                  <Route
+                    path="/advanced-analytics"
+                    element={<AdvancedAnalytics />}
+                  />
+                  <Route
+                    path="/predictive"
+                    element={<PredictiveAnalyticsPage />}
+                  />
+                  <Route path="/automation" element={<AutomationCenter />} />
+                  <Route path="/ai-insights" element={<AIInsightsPage />} />
+                  <Route path="/risk" element={<RiskAssessmentCenter />} />
+                  <Route path="/reports" element={<ReportsPage />} />
+                  <Route path="/settings" element={<SettingsPage />} />
+                  <Route path="/theme-showcase" element={<ThemeShowcase />} />
+                </Routes>
+              </main>
+            </div>
           </div>
-        </div>
-      </BrowserRouter>
+        </BrowserRouter>
+      </ThemeProvider>
     </ErrorBoundary>
   );
 }
