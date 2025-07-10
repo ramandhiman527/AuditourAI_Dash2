@@ -81,10 +81,19 @@ const Header = () => {
         {/* Logo and Title */}
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-white" />
+            <div
+              className="w-8 h-8 rounded-lg flex items-center justify-center"
+              style={{ backgroundColor: "var(--primary-green)" }}
+            >
+              <Sparkles
+                className="w-5 h-5"
+                style={{ color: "var(--text-light)" }}
+              />
             </div>
-            <h1 className="text-xl font-semibold text-gray-900">
+            <h1
+              className="text-xl font-semibold"
+              style={{ color: "var(--text-primary)" }}
+            >
               AI Audit Dashboard
             </h1>
           </div>
