@@ -26,10 +26,14 @@ function App() {
     setSidebarCollapsed(!sidebarCollapsed);
   };
 
-  return (
+    return (
     <ErrorBoundary>
-      <BrowserRouter>
-        <div className="App min-h-screen bg-gray-50">
+      <ThemeProvider>
+        <BrowserRouter>
+          <div
+            className="App min-h-screen transition-colors duration-300"
+            style={{ backgroundColor: 'var(--background-secondary)' }}
+          >
           <Header />
           <div className="flex h-[calc(100vh-73px)] relative">
             {/* Mobile overlay */}
@@ -57,7 +61,7 @@ function App() {
                 />
                 <Route path="/automation" element={<AutomationCenter />} />
                 <Route path="/ai-insights" element={<AIInsightsPage />} />
-                <Route path="/risk" element={<RiskAssessmentCenter />} />
+                                <Route path="/risk" element={<RiskAssessmentCenter />} />
                 <Route path="/reports" element={<ReportsPage />} />
                 <Route path="/settings" element={<SettingsPage />} />
                 <Route path="/theme-showcase" element={<ThemeShowcase />} />
