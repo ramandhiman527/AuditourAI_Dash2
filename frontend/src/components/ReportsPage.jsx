@@ -163,7 +163,7 @@ const ReportsPage = () => {
         </TabsList>
 
         <TabsContent value="all" className="space-y-4">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {mockReports.map((report) => (
               <ThemedCard
                 key={report.id}
@@ -301,8 +301,8 @@ const ReportsPage = () => {
                       )}
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                </ThemedCardContent>
+              </ThemedCard>
             ))}
           </div>
         </TabsContent>
