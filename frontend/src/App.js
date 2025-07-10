@@ -48,32 +48,8 @@ function App() {
                 <Route path="/automation" element={<AutomationCenter />} />
                 <Route path="/ai-insights" element={<AIInsightsPage />} />
                 <Route path="/risk" element={<RiskAssessmentCenter />} />
-                <Route
-                  path="/reports"
-                  element={
-                    <div className="p-6">
-                      <h1 className="text-2xl font-bold">
-                        Intelligent Reports
-                      </h1>
-                      <p className="text-gray-600 mt-2">
-                        AI-generated comprehensive audit reports with predictive
-                        insights
-                      </p>
-                    </div>
-                  }
-                />
-                <Route
-                  path="/settings"
-                  element={
-                    <div className="p-6">
-                      <h1 className="text-2xl font-bold">System Settings</h1>
-                      <p className="text-gray-600 mt-2">
-                        Configure AI preferences, automation rules, and system
-                        parameters
-                      </p>
-                    </div>
-                  }
-                />
+                <Route path="/reports" element={<ReportsPage />} />
+                <Route path="/settings" element={<SettingsPage />} />
               </Routes>
             </main>
           </div>
