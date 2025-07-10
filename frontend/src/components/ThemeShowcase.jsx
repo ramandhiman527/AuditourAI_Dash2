@@ -7,7 +7,12 @@ import {
   Download,
   Star,
   Brain,
+  Moon,
+  Sun,
+  Palette,
+  Contrast,
 } from "lucide-react";
+import { useTheme } from "../contexts/ThemeContext";
 import {
   ThemedCard,
   ThemedCardHeader,
