@@ -1,0 +1,279 @@
+/* Custom Color Scheme Variables */
+:root {
+  /* Primary Colors */
+  --primary-green: #3aa85a;
+  --primary-green-light: #4fbb69;
+  --primary-green-dark: #2e8a47;
+  --primary-green-rgb: 58, 168, 90;
+
+  /* Background Colors */
+  --card-background: #f9fafb;
+  --card-background-hover: #f3f4f6;
+
+  /* Text Colors */
+  --text-primary: #3a3a3a;
+  --text-secondary: #8c8c8c;
+  --text-light: #ffffff;
+
+  /* Status Colors */
+  --status-error: #e94b4b;
+  --status-error-light: #fee2e2;
+  --status-warning: #f5a623;
+  --status-warning-light: #fef3c7;
+  --status-success: #3aa85a;
+  --status-success-light: #d1fae5;
+
+  /* Border and Shadow */
+  --border-light: #e5e7eb;
+  --shadow-subtle:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-medium:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+  /* Animation Durations */
+  --animation-fast: 150ms;
+  --animation-medium: 300ms;
+  --animation-slow: 500ms;
+}
+
+/* Progress Bar Animations */
+@keyframes progress-fill {
+  0% {
+    width: 0%;
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes progress-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes button-press {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes card-hover {
+  0% {
+    transform: translateY(0);
+    box-shadow: var(--shadow-subtle);
+  }
+  100% {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Progress Bar Styles */
+.custom-progress {
+  background-color: var(--border-light);
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.custom-progress-fill {
+  background: linear-gradient(
+    90deg,
+    var(--primary-green),
+    var(--primary-green-light)
+  );
+  height: 100%;
+  border-radius: 9999px;
+  animation: progress-fill var(--animation-medium) ease-out;
+  transition: width var(--animation-medium) ease-out;
+  position: relative;
+}
+
+.custom-progress-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: progress-pulse 2s ease-in-out infinite;
+}
+
+/* Custom Button Styles */
+.custom-button-primary {
+  background: linear-gradient(
+    135deg,
+    var(--primary-green),
+    var(--primary-green-light)
+  );
+  color: var(--text-light);
+  border: none;
+  border-radius: 8px;
+  transition: all var(--animation-fast) ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-button-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left var(--animation-medium) ease-out;
+}
+
+.custom-button-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(var(--primary-green-rgb), 0.3);
+}
+
+.custom-button-primary:hover::before {
+  left: 100%;
+}
+
+.custom-button-primary:active {
+  animation: button-press var(--animation-fast) ease-out;
+}
+
+/* Custom Card Styles */
+.custom-card {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  transition: all var(--animation-medium) ease-out;
+  animation: fade-in var(--animation-medium) ease-out;
+}
+
+.custom-card:hover {
+  background-color: var(--card-background-hover);
+  animation: card-hover var(--animation-medium) ease-out forwards;
+}
+
+.custom-card-title {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.custom-card-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+/* Status Badge Styles */
+.status-badge-error {
+  background-color: var(--status-error-light);
+  color: var(--status-error);
+  border: 1px solid var(--status-error);
+}
+
+.status-badge-warning {
+  background-color: var(--status-warning-light);
+  color: var(--status-warning);
+  border: 1px solid var(--status-warning);
+}
+
+.status-badge-success {
+  background-color: var(--status-success-light);
+  color: var(--status-success);
+  border: 1px solid var(--status-success);
+}
+
+/* Metric Card Animations */
+.metric-card {
+  background: var(--card-background);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  transition: all var(--animation-medium) ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-green),
+    var(--primary-green-light)
+  );
+  transform: translateX(-100%);
+  transition: transform var(--animation-medium) ease-out;
+}
+
+.metric-card:hover::before {
+  transform: translateX(0);
+}
+
+.metric-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--primary-green);
+}
+
+/* Loading Animations */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .custom-card {
+    border-radius: 8px;
+  }
+
+  .metric-card:hover {
+    transform: none;
+  }
+}
