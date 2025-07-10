@@ -93,8 +93,14 @@ const Header = () => {
 
         {/* Right Section */}
         <div className="flex items-center space-x-4">
+          {/* Theme Toggle */}
+          <ThemeToggle size="sm" />
+
           {/* AI Status Indicator */}
-          <div className="flex items-center space-x-2 px-3 py-1 bg-gray-50 rounded-full">
+          <div
+            className="flex items-center space-x-2 px-3 py-1 rounded-full"
+            style={{ backgroundColor: "var(--card-background)" }}
+          >
             <div
               className={`w-2 h-2 rounded-full ${getStatusColor(mockAIStatus.status)}`}
             />
