@@ -27,22 +27,52 @@ import {
 
 const ThemeShowcase = () => {
   const [progress, setProgress] = useState(75);
+  const { theme, toggleTheme, isDark } = useTheme();
 
   return (
     <div
-      className="p-6 space-y-6"
-      style={{ backgroundColor: "#F9FAFB", minHeight: "100vh" }}
+      className="p-6 space-y-6 transition-colors duration-300"
+      style={{
+        backgroundColor: "var(--background-secondary)",
+        minHeight: "100vh",
+      }}
     >
       <div className="text-center mb-8">
         <h1
           className="text-4xl font-bold mb-2"
           style={{ color: "var(--text-primary)" }}
         >
-          Custom Theme Showcase
+          {isDark ? "Dark" : "Light"} Theme Showcase
         </h1>
         <p style={{ color: "var(--text-secondary)" }}>
-          Demonstrating the custom color scheme and animations
+          Demonstrating the {isDark ? "visually striking dark" : "clean light"}{" "}
+          theme with excellent readability
         </p>
+
+        {/* Theme Toggle Section */}
+        <div className="mt-6 flex items-center justify-center space-x-4">
+          <ThemedButton
+            variant={isDark ? "secondary" : "primary"}
+            onClick={toggleTheme}
+            className="flex items-center space-x-2"
+          >
+            {isDark ? (
+              <>
+                <Sun className="w-4 h-4" />
+                <span>Switch to Light</span>
+              </>
+            ) : (
+              <>
+                <Moon className="w-4 h-4" />
+                <span>Switch to Dark</span>
+              </>
+            )}
+          </ThemedButton>
+
+          <span className="text-sm" style={{ color: "var(--text-secondary)" }}>
+            Current: {theme} mode
+          </span>
+        </div>
       </div>
 
       {/* Color Palette */}
