@@ -136,11 +136,11 @@ const ReportsPage = () => {
           </Badge>
         </div>
         <div className="flex items-center space-x-2">
-          <Button variant="outline" size="sm">
+          <ThemedButton variant="secondary" size="sm">
             <Filter className="w-4 h-4 mr-1" />
             Filter
-          </Button>
-          <Button onClick={handleGenerateReport} disabled={loading}>
+          </ThemedButton>
+          <ThemedButton onClick={handleGenerateReport} disabled={loading}>
             {loading ? (
               <Loading type="inline" size="small" message="Generating..." />
             ) : (
@@ -149,7 +149,7 @@ const ReportsPage = () => {
                 Generate Report
               </>
             )}
-          </Button>
+          </ThemedButton>
         </div>
       </div>
 
