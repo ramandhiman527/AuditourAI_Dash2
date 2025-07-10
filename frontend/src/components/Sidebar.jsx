@@ -65,7 +65,11 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
 
   return (
     <div
-      className={`bg-white border-r border-gray-200 transition-all duration-300 ${isCollapsed ? "w-16" : "w-64"} flex flex-col h-screen`}
+      className={`bg-white border-r border-gray-200 transition-all duration-300 ${
+        isCollapsed ? "w-16" : "w-64"
+      } flex flex-col h-screen
+      ${isCollapsed ? "" : "max-md:fixed max-md:inset-y-0 max-md:z-50 max-md:w-64"}
+      ${isCollapsed ? "" : "max-md:shadow-xl"}`}
     >
       {/* Toggle Button */}
       <div className="p-4 border-b border-gray-200">
