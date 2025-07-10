@@ -40,20 +40,7 @@ function App() {
               <Route path="/predictive" element={<PredictiveAnalyticsPage />} />
               <Route path="/automation" element={<AutomationCenter />} />
               <Route path="/ai-insights" element={<AIInsightsPage />} />
-              <Route
-                path="/risk"
-                element={
-                  <div className="p-6">
-                    <h1 className="text-2xl font-bold">
-                      Risk Assessment Center
-                    </h1>
-                    <p className="text-gray-600 mt-2">
-                      Advanced risk analysis and mitigation strategies with
-                      real-time monitoring
-                    </p>
-                  </div>
-                }
-              />
+              <Route path="/risk" element={<RiskAssessmentCenter />} />
               <Route
                 path="/reports"
                 element={
