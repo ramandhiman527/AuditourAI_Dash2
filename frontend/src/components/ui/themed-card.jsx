@@ -7,7 +7,7 @@ const ThemedCard = React.forwardRef(
       ref={ref}
       className={cn(
         "custom-card",
-        hover && "hover:custom-card",
+        hover && "hover:shadow-lg hover:transform hover:-translate-y-1",
         animated && "transition-all duration-300 ease-out",
         className,
       )}
@@ -15,6 +15,7 @@ const ThemedCard = React.forwardRef(
         backgroundColor: "var(--card-background)",
         border: "1px solid var(--border-light)",
         borderRadius: "12px",
+        boxShadow: "var(--shadow-subtle)",
       }}
       {...props}
     >
