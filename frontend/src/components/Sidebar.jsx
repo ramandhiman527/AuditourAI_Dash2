@@ -22,7 +22,9 @@ import { Badge } from "./ui/badge";
 import { mockNavigationItems } from "../data/mockData";
 
 const Sidebar = ({ isCollapsed, onToggle }) => {
-  const [activeItem, setActiveItem] = useState("dashboard");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const activeItem = location.pathname;
 
   const iconMap = {
     LayoutDashboard,
