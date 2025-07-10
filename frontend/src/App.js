@@ -22,13 +22,14 @@ function App() {
     setSidebarCollapsed(!sidebarCollapsed);
   };
 
-  return (
-    <BrowserRouter>
-      <div className="App min-h-screen bg-gray-50">
-        <Header />
-        <div className="flex h-[calc(100vh-73px)]">
-          <Sidebar isCollapsed={sidebarCollapsed} onToggle={toggleSidebar} />
-          <main className="flex-1 overflow-auto">
+    return (
+    <ErrorBoundary>
+      <BrowserRouter>
+        <div className="App min-h-screen bg-gray-50">
+          <Header />
+          <div className="flex h-[calc(100vh-73px)]">
+            <Sidebar isCollapsed={sidebarCollapsed} onToggle={toggleSidebar} />
+            <main className="flex-1 overflow-auto">
             <Routes>
               <Route path="/" element={<EnhancedDashboard />} />
               <Route path="/dashboard" element={<EnhancedDashboard />} />
