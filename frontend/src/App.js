@@ -29,7 +29,15 @@ function App() {
       <BrowserRouter>
         <div className="App min-h-screen bg-gray-50">
           <Header />
-          <div className="flex h-[calc(100vh-73px)]">
+          <div className="flex h-[calc(100vh-73px)] relative">
+            {/* Mobile overlay */}
+            {!sidebarCollapsed && (
+              <div
+                className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+                onClick={toggleSidebar}
+              />
+            )}
+
             <Sidebar isCollapsed={sidebarCollapsed} onToggle={toggleSidebar} />
             <main className="flex-1 overflow-auto">
               <Routes>
