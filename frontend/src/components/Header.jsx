@@ -70,7 +70,13 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white border-b border-gray-200 px-6 py-4 sticky top-0 z-50">
+    <header
+      className="px-6 py-4 sticky top-0 z-50 transition-all duration-300"
+      style={{
+        backgroundColor: "var(--background-primary)",
+        borderBottom: "1px solid var(--border-light)",
+      }}
+    >
       <div className="flex items-center justify-between">
         {/* Logo and Title */}
         <div className="flex items-center space-x-4">
