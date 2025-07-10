@@ -76,7 +76,10 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
       }}
     >
       {/* Toggle Button */}
-      <div className="p-4 border-b border-gray-200">
+      <div
+        className="p-4"
+        style={{ borderBottom: "1px solid var(--border-light)" }}
+      >
         <Button
           variant="ghost"
           size="sm"
