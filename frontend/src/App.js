@@ -14,6 +14,8 @@ import RiskAssessmentCenter from "./components/RiskAssessmentCenter";
 import PredictiveAnalyticsPage from "./components/PredictiveAnalyticsPage";
 import AutomationCenter from "./components/AutomationCenter";
 import AIInsightsPage from "./components/AIInsightsPage";
+import ReportsPage from "./components/ReportsPage";
+import SettingsPage from "./components/SettingsPage";
 
 function App() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
