@@ -88,13 +88,13 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
         {mockNavigationItems.map((item) => (
           <div key={item.id} className="relative">
             <Button
-              variant={activeItem === item.href.slice(1) ? "default" : "ghost"}
+              variant={activeItem === item.href ? "default" : "ghost"}
               className={`w-full justify-start group relative transition-all duration-200 ${
-                activeItem === item.href.slice(1)
+                activeItem === item.href
                   ? "bg-indigo-600 text-white shadow-sm"
                   : "hover:bg-gray-50 text-gray-700"
               }`}
-              onClick={() => setActiveItem(item.href.slice(1))}
+              onClick={() => navigate(item.href)}
             >
               <div className="flex items-center space-x-3 flex-1">
                 {getIcon(item.icon)}
