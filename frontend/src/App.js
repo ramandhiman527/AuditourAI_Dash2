@@ -16,6 +16,7 @@ import AutomationCenter from "./components/AutomationCenter";
 import AIInsightsPage from "./components/AIInsightsPage";
 import ReportsPage from "./components/ReportsPage";
 import SettingsPage from "./components/SettingsPage";
+import ThemeShowcase from "./components/ThemeShowcase";
 
 function App() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
