@@ -1,21 +1,24 @@
 /* Custom Color Scheme Variables */
 :root {
-  /* Primary Colors */
+  /* Light Theme - Primary Colors */
   --primary-green: #3aa85a;
   --primary-green-light: #4fbb69;
   --primary-green-dark: #2e8a47;
   --primary-green-rgb: 58, 168, 90;
 
-  /* Background Colors */
+  /* Light Theme - Background Colors */
+  --background-primary: #ffffff;
+  --background-secondary: #f9fafb;
   --card-background: #f9fafb;
   --card-background-hover: #f3f4f6;
 
-  /* Text Colors */
+  /* Light Theme - Text Colors */
   --text-primary: #3a3a3a;
   --text-secondary: #8c8c8c;
   --text-light: #ffffff;
+  --text-muted: #6b7280;
 
-  /* Status Colors */
+  /* Light Theme - Status Colors */
   --status-error: #e94b4b;
   --status-error-light: #fee2e2;
   --status-warning: #f5a623;
@@ -23,17 +26,70 @@
   --status-success: #3aa85a;
   --status-success-light: #d1fae5;
 
-  /* Border and Shadow */
+  /* Light Theme - Border and Shadow */
   --border-light: #e5e7eb;
+  --border-medium: #d1d5db;
   --shadow-subtle:
     0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --shadow-medium:
     0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-large:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
   /* Animation Durations */
   --animation-fast: 150ms;
   --animation-medium: 300ms;
   --animation-slow: 500ms;
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+  /* Dark Theme - Primary Colors (Enhanced for dark backgrounds) */
+  --primary-green: #4ade80;
+  --primary-green-light: #6ee7b7;
+  --primary-green-dark: #22c55e;
+  --primary-green-rgb: 74, 222, 128;
+
+  /* Dark Theme - Background Colors */
+  --background-primary: #121212;
+  --background-secondary: #1e1e1e;
+  --card-background: #1f1f1f;
+  --card-background-hover: #2a2a2a;
+
+  /* Dark Theme - Text Colors (High contrast for readability) */
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --text-light: #ffffff;
+  --text-muted: #9ca3af;
+
+  /* Dark Theme - Status Colors (Brighter for visibility) */
+  --status-error: #f87171;
+  --status-error-light: #2d1b20;
+  --status-warning: #fbbf24;
+  --status-warning-light: #2d2817;
+  --status-success: #4ade80;
+  --status-success-light: #1a2e1a;
+
+  /* Dark Theme - Border and Shadow */
+  --border-light: #374151;
+  --border-medium: #4b5563;
+  --shadow-subtle:
+    0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-medium:
+    0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+  --shadow-large:
+    0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -2px rgba(0, 0, 0, 0.5);
+}
+
+/* Theme transition for smooth switching */
+*,
+*::before,
+*::after {
+  transition:
+    background-color var(--animation-medium) ease,
+    color var(--animation-medium) ease,
+    border-color var(--animation-medium) ease,
+    box-shadow var(--animation-medium) ease !important;
 }
 
 /* Progress Bar Animations */
