@@ -42,10 +42,21 @@ const EnhancedDashboard = () => {
   }, []);
 
   const iconMap = {
-    FileText: <FileText className="w-5 h-5 text-indigo-600" />,
-    Brain: <Brain className="w-5 h-5 text-indigo-600" />,
-    AlertTriangle: <AlertTriangle className="w-5 h-5 text-indigo-600" />,
-    Activity: <Activity className="w-5 h-5 text-indigo-600" />,
+    FileText: (
+      <FileText className="w-5 h-5" style={{ color: "var(--primary-green)" }} />
+    ),
+    Brain: (
+      <Brain className="w-5 h-5" style={{ color: "var(--primary-green)" }} />
+    ),
+    AlertTriangle: (
+      <AlertTriangle
+        className="w-5 h-5"
+        style={{ color: "var(--primary-green)" }}
+      />
+    ),
+    Activity: (
+      <Activity className="w-5 h-5" style={{ color: "var(--primary-green)" }} />
+    ),
   };
 
   const handleMetricClick = (metricData) => {
