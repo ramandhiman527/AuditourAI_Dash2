@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import ErrorBoundary from "./components/ErrorBoundary";
 import EnhancedDashboard from "./components/EnhancedDashboard";
 import DocumentManagement from "./components/DocumentManagement";
 import IntelligentAnalytics from "./components/IntelligentAnalytics";
